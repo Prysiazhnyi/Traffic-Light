@@ -27,26 +27,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="hcE-v6-NDM">
-                                <rect key="frame" x="132" y="152" width="150" height="484"/>
+                                <rect key="frame" x="107" y="142" width="200" height="634"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bl-Ax-9co">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="7tP-yN-TlC"/>
+                                            <constraint firstAttribute="height" constant="200" id="7tP-yN-TlC"/>
                                             <constraint firstAttribute="width" secondItem="2bl-Ax-9co" secondAttribute="height" multiplier="1:1" id="LdD-nd-Ld1"/>
-                                            <constraint firstAttribute="width" constant="150" id="MFI-i3-iEu"/>
+                                            <constraint firstAttribute="width" constant="200" id="MFI-i3-iEu"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTn-3d-N6a">
-                                        <rect key="frame" x="0.0" y="167" width="150" height="150"/>
+                                        <rect key="frame" x="0.0" y="217" width="200" height="200"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="uTn-3d-N6a" secondAttribute="height" multiplier="1:1" id="nfx-vl-fkN"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZG-IZ-j1j">
-                                        <rect key="frame" x="0.0" y="334" width="150" height="150"/>
+                                        <rect key="frame" x="0.0" y="434" width="200" height="200"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="TZG-IZ-j1j" secondAttribute="height" multiplier="1:1" id="xQV-ic-qup"/>
@@ -68,7 +68,7 @@
                         <constraints>
                             <constraint firstItem="hcE-v6-NDM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FiG-f1-7B9"/>
                             <constraint firstItem="OSa-B7-dVG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Sc8-0T-e4r"/>
-                            <constraint firstItem="hcE-v6-NDM" firstAttribute="top" secondItem="OSa-B7-dVG" secondAttribute="bottom" constant="30" id="Xel-qU-7H7"/>
+                            <constraint firstItem="hcE-v6-NDM" firstAttribute="top" secondItem="OSa-B7-dVG" secondAttribute="bottom" constant="20" id="Xel-qU-7H7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wwD-dF-3X0" secondAttribute="bottom" constant="10" id="dHC-IJ-DFS"/>
                             <constraint firstItem="OSa-B7-dVG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="157" id="gXz-U5-AEj"/>
                             <constraint firstItem="wwD-dF-3X0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sXQ-Oe-c60"/>
