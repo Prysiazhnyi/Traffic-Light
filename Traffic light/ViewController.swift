@@ -13,9 +13,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var redView: UIView!
     @IBOutlet weak var yelowView: UIView!
     @IBOutlet weak var greenView: UIView!
+    @IBOutlet weak var nextButton: UIButton!
     
     var timer: Timer?
-    var remainingSeconds = 10
+    var remainingSeconds = 0
+    var secondsRed = 6
+    var secondsYellow = 3
+    var secondsGreen = 10
     var selectLight = 0
     
     override func viewDidLoad() {
@@ -30,9 +34,11 @@ class ViewController: UIViewController {
         
         selectTrafficLight()
         
+        nextButton.setTitle("Next", for: .normal)
     }
     
     @IBAction func actionButtom(_ sender: Any) {
+        selectLight += 1
         selectTrafficLight()
     }
     
@@ -57,6 +63,7 @@ class ViewController: UIViewController {
         } else {
             timer?.invalidate() // Останавливаем таймер
             remainingSeconds = 10
+            selectLight += 1
             selectTrafficLight()
             //startTimer() // Снова запускаем таймер
         }
@@ -68,8 +75,6 @@ class ViewController: UIViewController {
     }
     
     func selectTrafficLight() {
-        
-        selectLight += 1
         
         // Сбрасываем все цвета
             redView.backgroundColor = .clear
@@ -85,15 +90,18 @@ class ViewController: UIViewController {
         case 0:
             redView.backgroundColor = .red
             timeLabel.textColor = .red
-            remainingSeconds = 5
+            nextButton.setTitleColor(.yellow, for: .normal)
+            remainingSeconds = secondsRed
         case 1:
             yelowView.backgroundColor = .yellow
             timeLabel.textColor = .yellow
-            remainingSeconds = 3
+            nextButton.setTitleColor(.green, for: .normal)
+            remainingSeconds = secondsYellow
         case 2:
             greenView.backgroundColor = .green
             timeLabel.textColor = .green
-            remainingSeconds = 8
+            nextButton.setTitleColor(.red, for: .normal)
+            remainingSeconds = secondsGreen
         default:
             break
         }
@@ -101,6 +109,5 @@ class ViewController: UIViewController {
         print("Current Light: \(selectLight), time = \(remainingSeconds)")
        
     }
-    
 }
 

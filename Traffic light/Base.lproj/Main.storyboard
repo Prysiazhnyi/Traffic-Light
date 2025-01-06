@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RQq-7b-2Gc">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
@@ -22,7 +22,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1d4-bL-VAk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -78,6 +78,7 @@
                     <navigationItem key="navigationItem" id="KUU-HW-n3a"/>
                     <connections>
                         <outlet property="greenView" destination="TZG-IZ-j1j" id="3Yh-tc-Otf"/>
+                        <outlet property="nextButton" destination="wwD-dF-3X0" id="FWc-v1-VkZ"/>
                         <outlet property="redView" destination="2bl-Ax-9co" id="ohA-WZ-c8a"/>
                         <outlet property="timeLabel" destination="OSa-B7-dVG" id="dMc-v8-SIA"/>
                         <outlet property="yelowView" destination="uTn-3d-N6a" id="wAI-uQ-6oL"/>
