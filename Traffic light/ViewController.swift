@@ -19,9 +19,9 @@ class ViewController: UIViewController {
     
     var timer: Timer?
     var remainingSeconds = 0
-    var secondsRed = 6
-    var secondsYellow = 3
-    var secondsGreen = 10
+    var secondsRed: Int = 0
+    var secondsYellow: Int = 0
+    var secondsGreen: Int = 0
     var selectLight = 0
     
     var titleLightMove: String {
@@ -45,9 +45,29 @@ class ViewController: UIViewController {
             trafficLoghtView(view)
         }
         
-        selectTrafficLight()
-        
         nextButton.setTitle("Next", for: .normal)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        loadTime()
+        selectTrafficLight()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopTrafficLight()
+    }
+    
+    func loadTime() {
+        secondsRed = Settings.shared.currentSettings.timeForRedLight
+        secondsYellow = Settings.shared.currentSettings.timeForYellowLight
+        secondsGreen = Settings.shared.currentSettings.timeForGreenLight
+    }
+    
+    func stopTrafficLight() {
+        timer?.invalidate()
+        selectLight = 0
     }
     
     @objc func settingTimeLight() {
@@ -57,8 +77,7 @@ class ViewController: UIViewController {
             navigationController?.pushViewController(settingsVC, animated: true)
         }
     }
-
-
+    
     @IBAction func actionButtom(_ sender: Any) {
         selectLight += 1
         selectTrafficLight()
@@ -83,8 +102,8 @@ class ViewController: UIViewController {
             updateTimeLabel() // Обновляем текст метки
         } else {
             timer?.invalidate() // Останавливаем таймер
-            remainingSeconds = 10
             selectLight += 1
+            selectTrafficLight()
         }
     }
     

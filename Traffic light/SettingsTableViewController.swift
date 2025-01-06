@@ -19,7 +19,7 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Settings Time Light"
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,17 +53,6 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        switch segue.identifier {
-//        case "selectTimeVC":
-//            if let vc = segue.destination as? SelectTimeViewController {
-//                vc.data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 30, 40, 50, 60]
-//            }
-//        default :
-//            break
-//        }
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "selectTimeRedVC":
@@ -85,5 +74,4 @@ class SettingsTableViewController: UITableViewController {
             break
         }
     }
-
 }

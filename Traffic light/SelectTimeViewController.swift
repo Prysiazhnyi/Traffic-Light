@@ -28,19 +28,18 @@ class SelectTimeViewController: UIViewController {
         super.viewDidLoad()
         
         // Устанавливаем selectedData в зависимости от выбранного типа света
-                switch configureForLightType {
-                case "Red":
-                    selectedData = redLightData
-                case "Yellow":
-                    selectedData = yellowLightData
-                case "Green":
-                    selectedData = greenLightData
-                default:
-                    selectedData = redLightData
-                }
+        switch configureForLightType {
+        case "Red":
+            selectedData = redLightData
+        case "Yellow":
+            selectedData = yellowLightData
+        case "Green":
+            selectedData = greenLightData
+        default:
+            selectedData = redLightData
+        }
         tableView.reloadData()
     }
-    
 }
 
 extension SelectTimeViewController: UITableViewDataSource, UITableViewDelegate {
@@ -55,26 +54,18 @@ extension SelectTimeViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        
-//        Settings.shared.currentSettings.timeForGame = data[indexPath.row]
-//        navigationController?.popViewController(animated: true)
-//        
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-            
-            // Обновляем настройки в зависимости от выбранного времени
-            if selectedData == redLightData {
-                Settings.shared.currentSettings.timeForRedLight = selectedData[indexPath.row]
-            } else if selectedData == yellowLightData {
-                Settings.shared.currentSettings.timeForYellowLight = selectedData[indexPath.row]
-            } else {
-                Settings.shared.currentSettings.timeForGreenLight = selectedData[indexPath.row]
-            }
-            
-            navigationController?.popViewController(animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // Обновляем настройки в зависимости от выбранного времени
+        if selectedData == redLightData {
+            Settings.shared.currentSettings.timeForRedLight = selectedData[indexPath.row]
+        } else if selectedData == yellowLightData {
+            Settings.shared.currentSettings.timeForYellowLight = selectedData[indexPath.row]
+        } else {
+            Settings.shared.currentSettings.timeForGreenLight = selectedData[indexPath.row]
         }
+        
+        navigationController?.popViewController(animated: true)
+    }
 }
