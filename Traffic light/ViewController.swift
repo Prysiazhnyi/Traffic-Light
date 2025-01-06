@@ -9,7 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeLabelRed: UILabel!
+    @IBOutlet weak var timeLabelYellow: UILabel!
+    @IBOutlet weak var timeLabelGreen: UILabel!
     @IBOutlet weak var redView: UIView!
     @IBOutlet weak var yelowView: UIView!
     @IBOutlet weak var greenView: UIView!
@@ -49,7 +51,6 @@ class ViewController: UIViewController {
         view.backgroundColor = .clear
     }
     
-    
     func startTimer() {
         timer?.invalidate() // Останавливаем предыдущий таймер, если он есть
         updateTimeLabel() // Обновляем метку сразу
@@ -64,14 +65,25 @@ class ViewController: UIViewController {
             timer?.invalidate() // Останавливаем таймер
             remainingSeconds = 10
             selectLight += 1
-            selectTrafficLight()
-            //startTimer() // Снова запускаем таймер
         }
     }
     
     func updateTimeLabel() {
-        timeLabel.text = String(format: "%02d", remainingSeconds)
-        //timeLabel.textColor = .red
+        
+        timeLabelRed.text?.removeAll()
+        timeLabelYellow.text?.removeAll()
+        timeLabelGreen.text?.removeAll()
+        
+        switch selectLight {
+        case 0:
+            timeLabelRed.text = String(format: "%02d", remainingSeconds)
+        case 1:
+            timeLabelYellow.text = String(format: "%02d", remainingSeconds)
+        case 2:
+            timeLabelGreen.text = String(format: "%02d", remainingSeconds)
+        default:
+            break
+        }
     }
     
     func selectTrafficLight() {
@@ -89,17 +101,14 @@ class ViewController: UIViewController {
         switch selectLight {
         case 0:
             redView.backgroundColor = .red
-            timeLabel.textColor = .red
             nextButton.setTitleColor(.yellow, for: .normal)
             remainingSeconds = secondsRed
         case 1:
             yelowView.backgroundColor = .yellow
-            timeLabel.textColor = .yellow
             nextButton.setTitleColor(.green, for: .normal)
             remainingSeconds = secondsYellow
         case 2:
             greenView.backgroundColor = .green
-            timeLabel.textColor = .green
             nextButton.setTitleColor(.red, for: .normal)
             remainingSeconds = secondsGreen
         default:
