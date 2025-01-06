@@ -24,8 +24,19 @@ class ViewController: UIViewController {
     var secondsGreen = 10
     var selectLight = 0
     
+    var titleLightMove: String {
+        switch selectLight {
+        case 0: return "Stop"
+        case 1: return "Get ready"
+        default: return "Move"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = titleLightMove
+        navigationItem.rightBarButtonItem  = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(settingTimeLight))
         
         // Массив для удобства обработки
         let trafficLightViews: [UIView] = [redView, yelowView, greenView]
@@ -39,6 +50,15 @@ class ViewController: UIViewController {
         nextButton.setTitle("Next", for: .normal)
     }
     
+    @objc func settingTimeLight() {
+        // Инициализируем экран из Storyboard
+        if let settingsVC = storyboard?.instantiateViewController(withIdentifier: "SettingsTableViewController") as? SettingsTableViewController {
+            // Выполняем push переход
+            navigationController?.pushViewController(settingsVC, animated: true)
+        }
+    }
+
+
     @IBAction func actionButtom(_ sender: Any) {
         selectLight += 1
         selectTrafficLight()
@@ -89,9 +109,9 @@ class ViewController: UIViewController {
     func selectTrafficLight() {
         
         // Сбрасываем все цвета
-            redView.backgroundColor = .clear
-            yelowView.backgroundColor = .clear
-            greenView.backgroundColor = .clear
+        redView.backgroundColor = .clear
+        yelowView.backgroundColor = .clear
+        greenView.backgroundColor = .clear
         
         if selectLight > 2 {
             selectLight = 0
@@ -116,7 +136,7 @@ class ViewController: UIViewController {
         }
         startTimer()
         print("Current Light: \(selectLight), time = \(remainingSeconds)")
-       
+        
     }
 }
 
