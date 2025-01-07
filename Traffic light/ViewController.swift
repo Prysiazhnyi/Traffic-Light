@@ -17,18 +17,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenView: UIView!
     @IBOutlet weak var nextButton: UIButton!
     
-    var timer: Timer?
+    var timer: Timer? {
+        didSet {
+            leftButtonBarButtomItem()
+        }
+    }
     var remainingSeconds = 0
     var secondsRed: Int = 0
     var secondsYellow: Int = 0
     var secondsGreen: Int = 0
-    var selectLight = 0
     
     var titleLightMove: String {
         switch selectLight {
         case 0: return "Stop"
         case 1: return "Get ready"
         default: return "Move"
+        }
+    }
+    
+    var selectLight = 0 {
+        didSet {
+            // Обновляем заголовок экрана при изменении selectLight
+            title = titleLightMove
         }
     }
     
@@ -59,15 +69,30 @@ class ViewController: UIViewController {
         stopTrafficLight()
     }
     
+    func leftButtonBarButtomItem() {
+        if timer == nil {
+                   navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(selectTrafficLight))
+               } else {
+                   navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(stopTrafficLight))
+               }
+    }
+    
     func loadTime() {
         secondsRed = Settings.shared.currentSettings.timeForRedLight
         secondsYellow = Settings.shared.currentSettings.timeForYellowLight
         secondsGreen = Settings.shared.currentSettings.timeForGreenLight
     }
     
-    func stopTrafficLight() {
+    @objc func stopTrafficLight() {
         timer?.invalidate()
+        timer = nil
         selectLight = 0
+        timeLabelRed.text?.removeAll()
+        timeLabelYellow.text?.removeAll()
+        timeLabelGreen.text?.removeAll()
+        redView.backgroundColor = .gray
+        yelowView.backgroundColor = .gray
+        greenView.backgroundColor = .gray
     }
     
     @objc func settingTimeLight() {
@@ -87,7 +112,7 @@ class ViewController: UIViewController {
         view.layer.cornerRadius = view.frame.width / 2
         view.layer.borderWidth = 2
         view.layer.borderColor = UIColor.black.cgColor
-        view.backgroundColor = .clear
+        view.backgroundColor = .gray
     }
     
     func startTimer() {
@@ -116,21 +141,24 @@ class ViewController: UIViewController {
         switch selectLight {
         case 0:
             timeLabelRed.text = String(format: "%02d", remainingSeconds)
+            timeLabelRed.textColor = .black
         case 1:
             timeLabelYellow.text = String(format: "%02d", remainingSeconds)
+            timeLabelYellow.textColor = .black
         case 2:
             timeLabelGreen.text = String(format: "%02d", remainingSeconds)
+            timeLabelGreen.textColor = .black
         default:
             break
         }
     }
     
-    func selectTrafficLight() {
+    @objc func selectTrafficLight() {
         
         // Сбрасываем все цвета
-        redView.backgroundColor = .clear
-        yelowView.backgroundColor = .clear
-        greenView.backgroundColor = .clear
+        redView.backgroundColor = .gray
+        yelowView.backgroundColor = .gray
+        greenView.backgroundColor = .gray
         
         if selectLight > 2 {
             selectLight = 0
